@@ -70,12 +70,73 @@ class SpecialistDoctor extends HealthProfessional {
     }
 }
 
+class Appointment
+{
+    private String patientName;
+    private String patientMobile;
+    private String preferredTime;
+    private HealthProfessional selectedDoctor;
+
+    public Appointment() {
+        this.patientName = "Unknown";
+        this.patientMobile = "0000000000";
+        this.preferredTime = "00:00";
+        this.selectedDoctor = null;
+    }
+
+    public Appointment(String patientName, String patientMobile, String preferredTime, HealthProfessional selectedDoctor) {
+        this.patientName = patientName;
+        this.patientMobile = patientMobile;
+        this.preferredTime = preferredTime;
+        this.selectedDoctor = selectedDoctor;
+    }
+
+    public void PrintDetails() 
+    {
+        if (patientName.isEmpty()) {
+              System.out.println("Name Invalid");
+              return;
+        }
+
+        if (patientMobile.isEmpty() || patientMobile.length() < 10) {
+             System.out.println("Phone Invalid");
+             return;
+        }
+
+        if (preferredTime.isEmpty()) {
+             System.out.println("Time Invalid");
+              return;
+        }
+
+        String[] parts = preferredTime.split(":");
+        int hour = Integer.parseInt(parts[0]);
+
+        if (hour < 9 || hour > 17) {
+            System.out.println("Failed To Book \nBusiness Hours 09:00 - 17:00\nPlease Book In Provided Hours");
+            return;
+        }
+
+        if (selectedDoctor == null) {
+             System.out.println("Doctor Invalid");
+             return;
+        }
+        
+        System.out.println("Patient Name: " + patientName);
+        System.out.println("Patient Mobile: " + patientMobile);
+        System.out.println("Preferred Time: " + preferredTime);
+
+        System.out.println("------------------------------");
+        System.out.println("Doctor Details:");
+        selectedDoctor.PrintDetails();
+    }
+}
+
 public class AssignmentOne
 {
     public static void main(String[] args)
     {
         // Part 3 – Using classes and objects
-        
+
         GeneralPractitioner gp1 = new GeneralPractitioner(1, "Dr Tony Lembke", "General Practice", "Men's Health");
         GeneralPractitioner gp2 = new GeneralPractitioner(2, "Dr Caitlin Witt", "General Practice", "Women's Health");
         GeneralPractitioner gp3 = new GeneralPractitioner(3, "Dr Luke Hogan", "General Practice", "Family Medicine");
@@ -96,5 +157,11 @@ public class AssignmentOne
         System.out.println("------------------------------");
 
         sd2.PrintDetails();
+        System.out.println("------------------------------");
+
+        Appointment appt1 = new Appointment("Liam Turner", "0456789123", "10:00", new GeneralPractitioner(6, "Dr Anika Strahan", "Family Health", "Child Health"));
+
+        appt1.PrintDetails();
+        System.out.println("------------------------------");
     }
 }
