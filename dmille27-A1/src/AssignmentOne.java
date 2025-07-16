@@ -1,3 +1,5 @@
+// https://alstonville.clinic/
+
 class HealthProfessional
 {
     private int id;
@@ -69,20 +71,30 @@ class SpecialistDoctor extends HealthProfessional {
 }
 
 public class AssignmentOne
- {
-    public static void main(String[] args) 
+{
+    public static void main(String[] args)
     {
-        HealthProfessional hp = new HealthProfessional(4, "Wren Casement", "General Nursing");
-        hp.PrintDetails();
+        // Part 3 – Using classes and objects
+        
+        GeneralPractitioner gp1 = new GeneralPractitioner(1, "Dr Tony Lembke", "General Practice", "Men's Health");
+        GeneralPractitioner gp2 = new GeneralPractitioner(2, "Dr Caitlin Witt", "General Practice", "Women's Health");
+        GeneralPractitioner gp3 = new GeneralPractitioner(3, "Dr Luke Hogan", "General Practice", "Family Medicine");
 
-        System.out.println();
+        SpecialistDoctor sd1 = new SpecialistDoctor(4, "Dr Vicki Liu", "Women's Health", "Obstetrics & Gynaecology");
+        SpecialistDoctor sd2 = new SpecialistDoctor(5, "Dr Tom Lucena", "Diagnostics", "Psychology & Behavioural Health");
 
-        GeneralPractitioner gp = new GeneralPractitioner(2, "Dr. Caitlin Witt", "Family Medicine", "Women's Health");
-        gp.PrintDetails();
+        gp1.PrintDetails();
+        System.out.println("------------------------------");
 
-        System.out.println();
+        gp2.PrintDetails();
+        System.out.println("------------------------------");
 
-        SpecialistDoctor sd = new SpecialistDoctor(3, "Dr. Tom Lucena", "Diagnostics", "Human Behaviour & Psychology");
-        sd.PrintDetails();
+        gp3.PrintDetails();
+        System.out.println("------------------------------");
+
+        sd1.PrintDetails();
+        System.out.println("------------------------------");
+
+        sd2.PrintDetails();
     }
 }
